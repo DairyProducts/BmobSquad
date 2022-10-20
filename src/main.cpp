@@ -12,13 +12,6 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// Drivetrain           drivetrain    2, 1, 3, 4      
-// ---- END VEXCODE CONFIGURED DEVICES ----
-
 #include "vex.h"
 
 using namespace vex;
