@@ -27,6 +27,10 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
+  int forward = Controller1.Axis3.position(vex::percent);
+  int sideways = Controller1.Axis4.position(vex::percent);
+  int turn = Controller1.Axis1.position(vex::percent);
+
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
