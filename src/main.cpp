@@ -1,7 +1,17 @@
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       main.cpp                                                  */
+/*    Author:       VEX                                                       */
+/*    Created:      Thu Sep 26 2019                                           */
+/*    Description:  Competition Template                                      */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
+// Drivetrain           drivetrain    1, 2, 3, 4      
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -26,10 +36,6 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-
-  int forward = Controller1.Axis3.position(vex::percent);
-  int sideways = Controller1.Axis4.position(vex::percent);
-  int turn = Controller1.Axis1.position(vex::percent);
 
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
@@ -89,10 +95,18 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
 
+  int forward = Controller1.Axis3.position(vex::percent);
+  int sideways = Controller1.Axis4.position(vex::percent);
+  int turn = Controller1.Axis1.position(vex::percent);
+
+  
+  /*rightMotorA.spin(vex::forward, forward - sideways + turn, vex::percent);
+  frontLeft.spin(vex::forward,  forward + sideways - turn, vex::percent);
+  backRight.spin(vex::forward,  forward + sideways + turn, vex::percent);
+  backLeft.spin(vex::forward,   forward - sideways - turn, vex::percent);*/
+
   // Prevent main from exiting with an infinite loop.
   while (true) {
     wait(100, msec);
   }
 }
-
-// Git test!!
