@@ -11,7 +11,7 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// Drivetrain           drivetrain    1, 2, 3, 4      
+// Drivetrain           drivetrain    7, 8, 9, 10      
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
