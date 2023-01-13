@@ -33,7 +33,27 @@ int rc_auto_loop_function_Controller1() {
       // calculate the drivetrain motor velocities from the controller joystick axies
       // left = Axis3 + Axis1
       // right = Axis3 - Axis1
-      int drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis1.position();
+      int forward = Controller1.Axis3.position(vex::percent);
+      int sideways = Controller1.Axis4.position(vex::percent);
+      int turn = Controller1.Axis1.position(vex::percent);
+
+      rightMotorA.spin(vex::forward, forward - sideways + turn, vex::percent);
+      leftMotorA.spin(vex::forward, forward + sideways - turn, vex::percent);
+      rightMotorB.spin(vex::forward, forward + sideways + turn, vex::percent);
+      leftMotorB.spin(vex::forward, forward - sideways - turn, vex::percent);
+      Controller1.Screen.clearScreen();
+      Controller1.Screen.setCursor(0, 0);
+      Controller1.Screen.newLine();
+      Controller1.Screen.print("LMA ");
+      Controller1.Screen.print((int)leftMotorA.velocity(rpm));
+      Controller1.Screen.print("RMA ");
+      Controller1.Screen.print((int)rightMotorA.velocity(rpm));
+      Controller1.Screen.newLine();
+      Controller1.Screen.print("LMB ");
+      Controller1.Screen.print((int)leftMotorB.velocity(rpm));
+      Controller1.Screen.print("RMB ");
+      Controller1.Screen.print((int)rightMotorB.velocity(rpm));
+      /*int drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis1.position();
       int drivetrainRightSideSpeed = Controller1.Axis3.position() - Controller1.Axis1.position();
       
       // check if the value is inside of the deadband range
@@ -72,10 +92,10 @@ int rc_auto_loop_function_Controller1() {
       if (DrivetrainRNeedsToBeStopped_Controller1) {
         RightDriveSmart.setVelocity(drivetrainRightSideSpeed, percent);
         RightDriveSmart.spin(forward);
-      }
+      }*/
     }
     // wait before repeating the process
-    wait(20, msec);
+    wait(5, msec);
   }
   return 0;
 }
