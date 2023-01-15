@@ -46,12 +46,12 @@ int rc_auto_loop_function_Controller1() {
       Controller1.Screen.newLine();
       Controller1.Screen.print("LMA ");
       Controller1.Screen.print((int)leftMotorA.velocity(rpm));
-      Controller1.Screen.print("RMA ");
+      Controller1.Screen.print(" RMA ");
       Controller1.Screen.print((int)rightMotorA.velocity(rpm));
       Controller1.Screen.newLine();
       Controller1.Screen.print("LMB ");
       Controller1.Screen.print((int)leftMotorB.velocity(rpm));
-      Controller1.Screen.print("RMB ");
+      Controller1.Screen.print(" RMB ");
       Controller1.Screen.print((int)rightMotorB.velocity(rpm));
       /*int drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis1.position();
       int drivetrainRightSideSpeed = Controller1.Axis3.position() - Controller1.Axis1.position();
@@ -95,7 +95,7 @@ int rc_auto_loop_function_Controller1() {
       }*/
     }
     // wait before repeating the process
-    wait(5, msec);
+    wait(10, msec);
   }
   return 0;
 }
