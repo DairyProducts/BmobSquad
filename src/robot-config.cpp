@@ -96,6 +96,7 @@ int rc_auto_loop_function_Controller1() {
 }
 
 void printBrainInfo(){
+  Brain.Screen.clearScreen();
   Brain.Screen.setCursor(0, 0);
   if (Brain.Battery.capacity(percent) < 15) Brain.Screen.setFillColor(red);
   else if (Brain.Battery.capacity(percent) < 25) Brain.Screen.setFillColor(orange);
