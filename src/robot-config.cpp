@@ -102,6 +102,26 @@ void printBrainInfo(){
   else if (Brain.Battery.capacity(percent) < 25) Brain.Screen.setFillColor(orange);
   else Brain.Screen.setFillColor(blue);
   Brain.Screen.print("Battery: ", Brain.Battery.capacity(percent));
+
+  if (leftMotorA.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
+  else if (leftMotorA.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
+  else Brain.Screen.setFillColor(blue);
+  Brain.Screen.print("LMA: ", leftMotorA.temperature(celsius), "C");
+
+  if (leftMotorB.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
+  else if (leftMotorB.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
+  else Brain.Screen.setFillColor(blue);
+  Brain.Screen.print("LBA: ", leftMotorB.temperature(celsius), "C");
+
+  if (rightMotorA.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
+  else if (rightMotorA.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
+  else Brain.Screen.setFillColor(blue);
+  Brain.Screen.print("LMA: ", rightMotorA.temperature(celsius), "C");
+
+  if (rightMotorB.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
+  else if (rightMotorB.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
+  else Brain.Screen.setFillColor(blue);
+  Brain.Screen.print("LMA: ", rightMotorB.temperature(celsius), "C");
 }
 
 /**
