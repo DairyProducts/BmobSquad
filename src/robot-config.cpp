@@ -44,15 +44,10 @@ int rc_auto_loop_function_Controller1() {
       Controller1.Screen.clearScreen();
       Controller1.Screen.setCursor(0, 0);
       Controller1.Screen.newLine();
-      Controller1.Screen.print("LMA ");
-      Controller1.Screen.print((int)leftMotorA.velocity(rpm));
-      Controller1.Screen.print(" RMA ");
-      Controller1.Screen.print((int)rightMotorA.velocity(rpm));
+      Controller1.Screen.print("LMA ", (int)leftMotorA.velocity(rpm), " RMA ", (int)rightMotorA.velocity(rpm));
       Controller1.Screen.newLine();
-      Controller1.Screen.print("LMB ");
-      Controller1.Screen.print((int)leftMotorB.velocity(rpm));
-      Controller1.Screen.print(" RMB ");
-      Controller1.Screen.print((int)rightMotorB.velocity(rpm));
+      Controller1.Screen.print("LMB ", (int)leftMotorB.velocity(rpm), " RMB ", (int)rightMotorB.velocity(rpm));
+
       /*int drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis1.position();
       int drivetrainRightSideSpeed = Controller1.Axis3.position() - Controller1.Axis1.position();
       
@@ -95,9 +90,17 @@ int rc_auto_loop_function_Controller1() {
       }*/
     }
     // wait before repeating the process
-    wait(10, msec);
+    wait(5, msec);
   }
   return 0;
+}
+
+void printBrainInfo(){
+  Brain.Screen.setCursor(0, 0);
+  if (Brain.Battery.capacity(percent) < 15) Brain.Screen.setFillColor(red);
+  else if (Brain.Battery.capacity(percent) < 25) Brain.Screen.setFillColor(orange);
+  else Brain.Screen.setFillColor(blue);
+  Brain.Screen.print("Battery: ", Brain.Battery.capacity(percent));
 }
 
 /**
