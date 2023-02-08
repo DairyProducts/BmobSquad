@@ -99,6 +99,9 @@ int main() {
   int sideways = Controller1.Axis4.position(vex::percent);
   int turn = Controller1.Axis1.position(vex::percent);
 
+  if (Controller1.ButtonA.pressing()){
+    intake.setVelocity(100, percent);
+  }
   /*
   */
   

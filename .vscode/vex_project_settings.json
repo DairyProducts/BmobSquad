@@ -4,7 +4,7 @@
 		"slot": 1,
 		"description": "11551A",
 		"platform": "V5",
-		"creationDate": "Thu, 20 Oct 2022 01:57:51 GMT",
+		"creationDate": "Wed, 08 Feb 2023 00:55:40 GMT",
 		"language": "cpp",
 		"sdkVersion": "V5_20220726_10_00_00",
 		"cpp": {
@@ -12,7 +12,7 @@
 		}
 	},
 	"extension": {
-		"version": "0.2.0",
+		"version": "0.3.0",
 		"json": 1
 	}
 }
