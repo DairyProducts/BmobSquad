@@ -78,7 +78,15 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-
+    intake.setBrake(coast);
+    intake.stop();
+    if (Controller1.ButtonA.PRESSED && intake.isSpinning()){
+      intake.setVelocity(100, percent);
+      intake.spin(forward);
+    } else if (Controller1.ButtonA.PRESSED && !intake.isSpinning()){
+      intake.setBrake(coast);
+      intake.stop();
+    }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
@@ -99,9 +107,7 @@ int main() {
   int sideways = Controller1.Axis4.position(vex::percent);
   int turn = Controller1.Axis1.position(vex::percent);
 
-  if (Controller1.ButtonA.pressing()){
-    intake.setVelocity(100, percent);
-  }
+  
   /*
   */
   
