@@ -1,19 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/*                                                                            */
-/*    Module:       main.cpp                                                  */
-/*    Author:       VEX                                                       */
-/*    Created:      Thu Sep 26 2019                                           */
-/*    Description:  Competition Template                                      */
-/*                                                                            */
-/*----------------------------------------------------------------------------*/
-
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// Drivetrain           drivetrain    7, 8, 9, 10      
-// ---- END VEXCODE CONFIGURED DEVICES ----
-
 #include "vex.h"
 
 using namespace vex;
@@ -114,15 +98,6 @@ int main() {
   int forward = Controller1.Axis3.position(vex::percent);
   int sideways = Controller1.Axis4.position(vex::percent);
   int turn = Controller1.Axis1.position(vex::percent);
-
-  
-  /*
-  */
-  
-  /*rightMotorA.spin(vex::forward, forward - sideways + turn, vex::percent);
-  frontLeft.spin(vex::forward,  forward + sideways - turn, vex::percent);
-  backRight.spin(vex::forward,  forward + sideways + turn, vex::percent);
-  backLeft.spin(vex::forward,   forward - sideways - turn, vex::percent);*/
 
   // Prevent main from exiting with an infinite loop.
   while (true) {
