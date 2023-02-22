@@ -53,6 +53,9 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
+  bool intakeActive = false;
+  bool flywheelActive = false;
+  bool spankerActive = false;
   bool spankerActive = false;
   while (1) {
     // This is the main execution loop for the user control program.
@@ -64,18 +67,20 @@ void usercontrol(void) {
     // update your motors, etc.
     // ........................................................................
     intake.setBrake(coast);
-    if (Controller1.ButtonA.PRESSED && intake.isSpinning()){
+    if (Controller1.ButtonA.PRESSED && !intakeActive){
+      intakeActive = true;
       intake.setVelocity(100, percent);
       intake.spin(forward);
-    } else if (Controller1.ButtonA.PRESSED && !intake.isSpinning()){
+    } else if (Controller1.ButtonA.PRESSED && intakeActive){
+      intakeActive = false;
       intake.setBrake(coast);
       intake.stop();
       intake.setBrake(coast);
     }
-    if (Controller1.ButtonB.PRESSED && flywheel.isSpinning()){
+    if (Controller1.ButtonB.PRESSED && !flywheelActive){
       flywheel.setVelocity(100, percent);
       flywheel.spin(forward);
-    } else if (Controller1.ButtonB.PRESSED && !flywheel.isSpinning()){
+    } else if (Controller1.ButtonB.PRESSED && flywheelActive){
       flywheel.setBrake(coast);
       flywheel.stop();
       flywheel.setBrake(coast);
