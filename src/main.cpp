@@ -56,7 +56,6 @@ void usercontrol(void) {
   bool intakeActive = false;
   bool flywheelActive = false;
   bool spankerActive = false;
-  bool spankerActive = false;
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
