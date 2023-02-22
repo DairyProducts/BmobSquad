@@ -21,7 +21,7 @@ drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 317.
 motor intake = motor(PORT6, ratio18_1, false);
 
 //flywheel motor
-motor flywheel = motor(PORT5, ratio6_1, false);
+motor flywheel = motor(PORT18, ratio6_1, false);
 
 //spanker motor
 motor spanker = motor(PORT4, ratio18_1, false);

@@ -71,7 +71,8 @@ void usercontrol(void) {
       intakeActive = true;
       intake.setVelocity(100, percent);
       intake.spin(forward);
-    } if (Controller1.ButtonA.PRESSED && intakeActive){
+    } 
+    if (Controller1.ButtonA.PRESSED && intakeActive){
       intakeActive = false;
       intake.stop();
     }
@@ -79,15 +80,17 @@ void usercontrol(void) {
       flywheelActive = true;
       flywheel.setVelocity(100, percent);
       flywheel.spin(forward);
-    } if (Controller1.ButtonB.PRESSED && flywheelActive){
+    } 
+    if (Controller1.ButtonB.PRESSED && flywheelActive){
       flywheelActive = false;
       flywheel.stop();
     }
-      if (Controller1.ButtonY.PRESSED && !spankerActive){
+    if (Controller1.ButtonY.PRESSED && !spankerActive){
       spanker.spinToPosition(90, degrees);
-    } if (Controller1.ButtonY.PRESSED && spankerActive){
+    } 
+    if (Controller1.ButtonY.PRESSED && spankerActive){
       spanker.spinToPosition(0, degrees);
-  }
+    }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
