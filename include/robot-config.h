@@ -7,6 +7,7 @@ extern controller Controller1;
 extern drivetrain Drivetrain;
 extern motor intake;
 extern motor flywheel;
+extern motor spanker;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

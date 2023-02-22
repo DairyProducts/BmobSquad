@@ -53,6 +53,7 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
+  bool spankerActive = false;
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
@@ -81,6 +82,11 @@ void usercontrol(void) {
     }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
+  }
+  if (Controller1.ButtonY.PRESSED && !spankerActive){
+    spanker.spinToPosition(90, degrees);
+  } else if (Controller1.ButtonY.PRESSED && spankerActive){
+    spanker.spinToPosition(0, degrees);
   }
 }
 
