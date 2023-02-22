@@ -5,6 +5,10 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
+bool intakeActive = false;
+bool flywheelActive = false;
+bool spankerActive = false;
+
 // define your global instances of motors and other devices here
 
 /*---------------------------------------------------------------------------*/
@@ -53,9 +57,7 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
-  bool intakeActive = false;
-  bool flywheelActive = false;
-  bool spankerActive = false;
+
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
@@ -74,7 +76,7 @@ void usercontrol(void) {
     } 
     if (Controller1.ButtonA.PRESSED && intakeActive){
       intakeActive = false;
-      intake.stop();
+      intake.stop(brakeType::coast);
     }
     if (Controller1.ButtonB.PRESSED && !flywheelActive){
       flywheelActive = true;
@@ -83,7 +85,7 @@ void usercontrol(void) {
     } 
     if (Controller1.ButtonB.PRESSED && flywheelActive){
       flywheelActive = false;
-      flywheel.stop();
+      flywheel.stop(brakeType::coast);
     }
     if (Controller1.ButtonY.PRESSED && !spankerActive){
       spanker.spinToPosition(90, degrees);
