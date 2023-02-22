@@ -66,32 +66,32 @@ void usercontrol(void) {
     // update your motors, etc.
     // ........................................................................
     intake.setBrake(coast);
+    flywheel.setBrake(coast);
     if (Controller1.ButtonA.PRESSED && !intakeActive){
       intakeActive = true;
       intake.setVelocity(100, percent);
       intake.spin(forward);
     } if (Controller1.ButtonA.PRESSED && intakeActive){
       intakeActive = false;
-      intake.setBrake(coast);
       intake.stop();
-      intake.setBrake(coast);
     }
     if (Controller1.ButtonB.PRESSED && !flywheelActive){
+      flywheelActive = true;
       flywheel.setVelocity(100, percent);
       flywheel.spin(forward);
     } if (Controller1.ButtonB.PRESSED && flywheelActive){
-      flywheel.setBrake(coast);
+      flywheelActive = false;
       flywheel.stop();
-      flywheel.setBrake(coast);
     }
+      if (Controller1.ButtonY.PRESSED && !spankerActive){
+      spanker.spinToPosition(90, degrees);
+    } if (Controller1.ButtonY.PRESSED && spankerActive){
+      spanker.spinToPosition(0, degrees);
+  }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
-  if (Controller1.ButtonY.PRESSED && !spankerActive){
-    spanker.spinToPosition(90, degrees);
-  } if (Controller1.ButtonY.PRESSED && spankerActive){
-    spanker.spinToPosition(0, degrees);
-  }
+
 }
 
 //
