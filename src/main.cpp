@@ -79,7 +79,7 @@ void usercontrol(void) {
     if (Controller1.ButtonB.PRESSED && !flywheelActive){
       flywheelActive = true;
       flywheel.setVelocity(100, percent);
-      flywheel.spin(forward);
+      flywheel.spin(reverse);
     } 
     if (Controller1.ButtonB.PRESSED && flywheelActive){
       flywheelActive = false;
