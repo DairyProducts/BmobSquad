@@ -99,9 +99,7 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-    intake.setBrake(coast);
-    flywheel.setBrake(coast);
-    Controller1.ButtonA.pressed(toggleIntake);
+    Controller1.ButtonX.pressed(toggleIntake);
     Controller1.ButtonB.pressed(toggleFlywheel);
     Controller1.ButtonY.pressed(toggleSpanker);
     wait(20, msec); // Sleep the task for a short amount of time to
