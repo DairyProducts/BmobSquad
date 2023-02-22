@@ -70,7 +70,7 @@ void usercontrol(void) {
       intakeActive = true;
       intake.setVelocity(100, percent);
       intake.spin(forward);
-    } else if (Controller1.ButtonA.PRESSED && intakeActive){
+    } if (Controller1.ButtonA.PRESSED && intakeActive){
       intakeActive = false;
       intake.setBrake(coast);
       intake.stop();
@@ -79,7 +79,7 @@ void usercontrol(void) {
     if (Controller1.ButtonB.PRESSED && !flywheelActive){
       flywheel.setVelocity(100, percent);
       flywheel.spin(forward);
-    } else if (Controller1.ButtonB.PRESSED && flywheelActive){
+    } if (Controller1.ButtonB.PRESSED && flywheelActive){
       flywheel.setBrake(coast);
       flywheel.stop();
       flywheel.setBrake(coast);
@@ -89,7 +89,7 @@ void usercontrol(void) {
   }
   if (Controller1.ButtonY.PRESSED && !spankerActive){
     spanker.spinToPosition(90, degrees);
-  } else if (Controller1.ButtonY.PRESSED && spankerActive){
+  } if (Controller1.ButtonY.PRESSED && spankerActive){
     spanker.spinToPosition(0, degrees);
   }
 }
