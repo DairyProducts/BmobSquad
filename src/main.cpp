@@ -102,6 +102,13 @@ void usercontrol(void) {
     Controller1.ButtonX.pressed(toggleIntake);
     Controller1.ButtonB.pressed(toggleFlywheel);
     Controller1.ButtonY.pressed(toggleSpanker);
+    if (Controller1.ButtonA.pressing()){
+      intake.setVelocity(100, percent);
+      intake.spin(forward);
+    }
+    else{
+      intake.stop(brakeType::coast);
+    }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
