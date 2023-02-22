@@ -55,6 +55,38 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void toggleIntake(void) {
+  if (intakeActive) {
+    intakeActive = false;
+    intake.stop(brakeType::coast);
+  } else {
+    intakeActive = true;
+    intake.setVelocity(100, percent);
+    intake.spin(forward);
+  }
+}
+
+void toggleFlywheel(void) {
+  if (flywheelActive) {
+    flywheelActive = false;
+    flywheel.stop(brakeType::coast);
+  } else {
+    flywheelActive = true;
+    flywheel.setVelocity(100, percent);
+    flywheel.spin(reverse);
+  }
+}
+
+void toggleSpanker(void) {
+  if (spankerActive) {
+    spankerActive = false;
+    spanker.spinToPosition(0, degrees);
+  } else {
+    spankerActive = true;
+    spanker.setVelocity(100, percent);
+    spanker.spinToPosition(90, degrees);
+  }
+}
 void usercontrol(void) {
   // User control code here, inside the loop
 
@@ -69,30 +101,9 @@ void usercontrol(void) {
     // ........................................................................
     intake.setBrake(coast);
     flywheel.setBrake(coast);
-    if (Controller1.ButtonA.PRESSED && !intakeActive){
-      intakeActive = true;
-      intake.setVelocity(100, percent);
-      intake.spin(forward);
-    } 
-    if (Controller1.ButtonA.PRESSED && intakeActive){
-      intakeActive = false;
-      intake.stop(brakeType::coast);
-    }
-    if (Controller1.ButtonB.PRESSED && !flywheelActive){
-      flywheelActive = true;
-      flywheel.setVelocity(100, percent);
-      flywheel.spin(reverse);
-    } 
-    if (Controller1.ButtonB.PRESSED && flywheelActive){
-      flywheelActive = false;
-      flywheel.stop(brakeType::coast);
-    }
-    if (Controller1.ButtonY.PRESSED && !spankerActive){
-      spanker.spinToPosition(90, degrees);
-    } 
-    if (Controller1.ButtonY.PRESSED && spankerActive){
-      spanker.spinToPosition(0, degrees);
-    }
+    Controller1.ButtonA.pressed(toggleIntake);
+    Controller1.ButtonB.pressed(toggleFlywheel);
+    Controller1.ButtonY.pressed(toggleSpanker);
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
