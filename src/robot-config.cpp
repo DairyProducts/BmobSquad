@@ -50,12 +50,6 @@ int rc_auto_loop_function_Controller1() {
       leftMotorA.spin(vex::forward, forward + sideways - turn, vex::percent);
       rightMotorB.spin(vex::forward, forward + sideways + turn, vex::percent);
       leftMotorB.spin(vex::forward, forward - sideways - turn, vex::percent);
-      Controller1.Screen.clearScreen();
-      Controller1.Screen.setCursor(0, 0);
-      Controller1.Screen.newLine();
-      Controller1.Screen.print("LMA ", (int)leftMotorA.velocity(rpm), " RMA ", (int)rightMotorA.velocity(rpm));
-      Controller1.Screen.newLine();
-      Controller1.Screen.print("LMB ", (int)leftMotorB.velocity(rpm), " RMB ", (int)rightMotorB.velocity(rpm));
 
       
     }

@@ -72,7 +72,7 @@ void toggleFlywheel(void) {
     flywheel.stop(brakeType::coast);
   } else {
     flywheelActive = true;
-    flywheel.setVelocity(100, percent);
+    flywheel.setVelocity(1000, rpm);
     flywheel.spin(reverse);
   }
 }
