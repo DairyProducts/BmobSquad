@@ -126,10 +126,6 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
 
-  int forward = Controller1.Axis3.position(vex::percent);
-  int sideways = Controller1.Axis4.position(vex::percent);
-  int turn = Controller1.Axis1.position(vex::percent);
-
   // Prevent main from exiting with an infinite loop.
   while (true) {
     wait(100, msec);
