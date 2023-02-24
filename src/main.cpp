@@ -102,7 +102,7 @@ void usercontrol(void) {
     Controller1.ButtonX.pressed(toggleIntake);
     Controller1.ButtonB.pressed(toggleFlywheel);
     Controller1.ButtonY.pressed(toggleSpanker);
-    if (Controller1.ButtonL2.pressing()){
+    if (Controller1.ButtonR1.pressing()){
       intake.setVelocity(100, percent);
       intake.spin(forward);
     }
