@@ -52,10 +52,10 @@ int rc_auto_loop_function_Controller1() {
       int y = Controller1.Axis3.position(vex::percent);
       int r = Controller1.Axis1.position(vex::percent);
       
-      frontRight.spin(vex::forward, forward + sideways + turn, vex::percent);
-      frontLeft.spin(vex::forward,  forward - sideways - turn, vex::percent);
-      backRight.spin(vex::forward,  forward - sideways + turn, vex::percent);
-      backLeft.spin(vex::forward,   forward + sideways - turn, vex::percent);
+      frontRight.spin(vex::forward, forward + sideways - turn, vex::percent);
+      frontLeft.spin(vex::forward,  forward - sideways + turn, vex::percent);
+      backRight.spin(vex::forward,  forward - sideways - turn, vex::percent);
+      backLeft.spin(vex::forward,   forward + sideways + turn, vex::percent);
 
     }
     // wait before repeating the process
