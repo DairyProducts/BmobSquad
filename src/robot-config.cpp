@@ -39,9 +39,7 @@ int rc_auto_loop_function_Controller1() {
   // update the motors based on the input values
   while(true) {
     if(RemoteControlCodeEnabled) {
-      // calculate the drivetrain motor velocities from the controller joystick axies
-      // left = Axis3 + Axis1
-      // right = Axis3 - Axis1
+      /*
       int forward = Controller1.Axis3.position(vex::percent);
       int sideways = Controller1.Axis4.position(vex::percent);
       int turn = Controller1.Axis1.position(vex::percent);
@@ -49,9 +47,16 @@ int rc_auto_loop_function_Controller1() {
       rightMotorA.spin(vex::forward, forward - sideways + turn, vex::percent);
       leftMotorA.spin(vex::forward, forward + sideways - turn, vex::percent);
       rightMotorB.spin(vex::forward, forward + sideways + turn, vex::percent);
-      leftMotorB.spin(vex::forward, forward - sideways - turn, vex::percent);
+      leftMotorB.spin(vex::forward, forward - sideways - turn, vex::percent);*/
+      int x = Controller1.Axis4.position(vex::percent);
+      int y = Controller1.Axis3.position(vex::percent);
+      int r = Controller1.Axis1.position(vex::percent);
 
-      
+      leftMotorA.spin(vex::directionType::fwd, x + y + r, vex::velocityUnits::pct);
+      leftMotorB.spin(vex::directionType::fwd, -x + y + r, vex::velocityUnits::pct);
+      rightMotorA.spin(vex::directionType::fwd, x - y - r, vex::velocityUnits::pct);
+      rightMotorB.spin(vex::directionType::fwd, -x - y - r, vex::velocityUnits::pct);
+
     }
     // wait before repeating the process
     wait(5, msec);
