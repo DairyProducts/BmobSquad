@@ -106,14 +106,14 @@ void usercontrol(void) {
       intake.setVelocity(100, percent);
       intake.spin(forward);
     }
-    else{
+    else if (!Controller1.ButtonR2.pressing()){
       intake.stop(brakeType::coast);
     }
     if (Controller1.ButtonR2.pressing()){
       intake.setVelocity(100, percent);
       intake.spin(reverse);
     }
-    else{
+    else if (!Controller1.ButtonR1.pressing()){
       intake.stop(brakeType::coast);
     }
     wait(20, msec); // Sleep the task for a short amount of time to
