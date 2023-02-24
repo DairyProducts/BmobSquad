@@ -9,12 +9,12 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor leftMotorA = motor(PORT8, ratio18_1, false);
-motor leftMotorB = motor(PORT9, ratio18_1, false);
-motor_group LeftDriveSmart = motor_group(leftMotorA, leftMotorB);
-motor rightMotorA = motor(PORT7, ratio18_1, true);
-motor rightMotorB = motor(PORT10, ratio18_1, true);
-motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
+motor frontLeft = motor(PORT8, ratio18_1, false);
+motor backLeft = motor(PORT9, ratio18_1, false);
+motor_group LeftDriveSmart = motor_group(frontLeft, backLeft);
+motor frontRight = motor(PORT7, ratio18_1, true);
+motor backRight = motor(PORT10, ratio18_1, true);
+motor_group RightDriveSmart = motor_group(frontRight, backRight);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 317.5, 190.5, mm, 1);
 
 //intake motor
@@ -39,11 +39,11 @@ int rc_auto_loop_function_Controller1() {
   // update the motors based on the input values
   while(true) {
     if(RemoteControlCodeEnabled) {
-      /*
+      
       int forward = Controller1.Axis3.position(vex::percent);
       int sideways = Controller1.Axis4.position(vex::percent);
       int turn = Controller1.Axis1.position(vex::percent);
-
+      /*
       rightMotorA.spin(vex::forward, forward - sideways + turn, vex::percent);
       leftMotorA.spin(vex::forward, forward + sideways - turn, vex::percent);
       rightMotorB.spin(vex::forward, forward + sideways + turn, vex::percent);
@@ -51,11 +51,11 @@ int rc_auto_loop_function_Controller1() {
       int x = Controller1.Axis4.position(vex::percent);
       int y = Controller1.Axis3.position(vex::percent);
       int r = Controller1.Axis1.position(vex::percent);
-
-      leftMotorA.spin(vex::directionType::fwd, x + y + r, vex::velocityUnits::pct);
-      leftMotorB.spin(vex::directionType::fwd, -x + y + r, vex::velocityUnits::pct);
-      rightMotorA.spin(vex::directionType::fwd, x - y - r, vex::velocityUnits::pct);
-      rightMotorB.spin(vex::directionType::fwd, -x - y - r, vex::velocityUnits::pct);
+      
+      frontRight.spin(vex::forward, forward - sideways + turn, vex::percent);
+      frontLeft.spin(vex::forward,  forward + sideways - turn, vex::percent);
+      backRight.spin(vex::forward,  forward + sideways + turn, vex::percent);
+      backLeft.spin(vex::forward,   forward - sideways - turn, vex::percent);
 
     }
     // wait before repeating the process
@@ -65,32 +65,6 @@ int rc_auto_loop_function_Controller1() {
 }
 
 void printBrainInfo(){
-  Brain.Screen.clearScreen();
-  Brain.Screen.setCursor(0, 0);
-  if (Brain.Battery.capacity(percent) < 15) Brain.Screen.setFillColor(red);
-  else if (Brain.Battery.capacity(percent) < 25) Brain.Screen.setFillColor(orange);
-  else Brain.Screen.setFillColor(blue);
-  Brain.Screen.print("Battery: ", Brain.Battery.capacity(percent));
-
-  if (leftMotorA.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
-  else if (leftMotorA.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
-  else Brain.Screen.setFillColor(blue);
-  Brain.Screen.print("LMA: ", leftMotorA.temperature(celsius), "C");
-
-  if (leftMotorB.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
-  else if (leftMotorB.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
-  else Brain.Screen.setFillColor(blue);
-  Brain.Screen.print("LBA: ", leftMotorB.temperature(celsius), "C");
-
-  if (rightMotorA.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
-  else if (rightMotorA.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
-  else Brain.Screen.setFillColor(blue);
-  Brain.Screen.print("LMA: ", rightMotorA.temperature(celsius), "C");
-
-  if (rightMotorB.temperature(celsius) > 50) Brain.Screen.setFillColor(red);
-  else if (rightMotorB.temperature(celsius) > 40) Brain.Screen.setFillColor(orange);
-  else Brain.Screen.setFillColor(blue);
-  Brain.Screen.print("LMA: ", rightMotorB.temperature(celsius), "C");
 }
 
 /**
