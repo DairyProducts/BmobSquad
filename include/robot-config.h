@@ -3,6 +3,10 @@ using namespace vex;
 extern brain Brain;
 
 // VEXcode devices
+extern motor frontLeft;
+extern motor frontRight;
+extern motor backLeft;
+extern motor backRight;
 extern controller Controller1;
 extern drivetrain Drivetrain;
 extern motor intake;

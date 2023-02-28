@@ -15,7 +15,7 @@ motor_group LeftDriveSmart = motor_group(frontLeft, backLeft);
 motor frontRight = motor(PORT7, ratio18_1, true);
 motor backRight = motor(PORT10, ratio18_1, true);
 motor_group RightDriveSmart = motor_group(frontRight, backRight);
-drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 317.5, 190.5, mm, 1);
+// drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 317.5, 190.5, mm, 1);
 
 //intake motor
 motor intake = motor(PORT6, ratio18_1, false);
@@ -39,6 +39,11 @@ int rc_auto_loop_function_Controller1() {
   // update the motors based on the input values
   while(true) {
     if(RemoteControlCodeEnabled) {
+      frontRight.setVelocity(100, percent);
+      backRight.setVelocity(100, percent);
+      frontLeft.setVelocity(100, percent);
+      backLeft.setVelocity(100, percent);
+      //Drivetrain.setDriveVelocity(100, percent);
       
       int forward = Controller1.Axis3.position(vex::percent);
       int sideways = Controller1.Axis4.position(vex::percent);

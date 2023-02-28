@@ -38,11 +38,45 @@ void pre_auton(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
+void toggleFlywheel(void) {
+  if (flywheelActive) {
+    flywheelActive = false;
+    flywheel.stop(brakeType::coast);
+  } else {
+    flywheelActive = true;
+    flywheel.setVelocity(1000, rpm);
+    flywheel.spin(reverse);
+  }
+}
+
+void toggleSpanker(void) {
+  if (spankerActive) {
+    spankerActive = false;
+    spanker.spinToPosition(0, degrees);
+  } else {
+    spankerActive = true;
+    spanker.setVelocity(100, percent);
+    spanker.spinToPosition(90, degrees);
+  }
+}
 
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
+/*
+  toggleFlywheel();
+  wait (5, seconds);
+  toggleSpanker();
+  wait (1, seconds);
+  toggleSpanker();
+  toggleFlywheel();
+  */
+  frontLeft.spin(vex::forward, 100, vex::percent);
+  frontRight.spin(forward);
+  // Drivetrain.driveFor(forward, 12, inches);
+  intake.setVelocity(100, percent);
+  intake.spinFor(forward, 180, degrees);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -66,27 +100,9 @@ void toggleIntake(void) {
   }
 }
 
-void toggleFlywheel(void) {
-  if (flywheelActive) {
-    flywheelActive = false;
-    flywheel.stop(brakeType::coast);
-  } else {
-    flywheelActive = true;
-    flywheel.setVelocity(1000, rpm);
-    flywheel.spin(reverse);
-  }
-}
 
-void toggleSpanker(void) {
-  if (spankerActive) {
-    spankerActive = false;
-    spanker.spinToPosition(0, degrees);
-  } else {
-    spankerActive = true;
-    spanker.setVelocity(100, percent);
-    spanker.spinToPosition(90, degrees);
-  }
-}
+
+
 void usercontrol(void) {
   // User control code here, inside the loop
 
