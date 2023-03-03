@@ -3,7 +3,7 @@ Code for team 11551A for the 2022-23 VRC Game Spin Up.
 Repository public as the season is ending soon. Will be archived in the future.
 Contact Dairy#6166 on Discord if you have questions.
 
-Code created mostly in VS Code with the [Vex Robotics extention](http://https://www.vexrobotics.com/vexcode/vscode-extension "Vex Robotics extention"). [VEXCode Pro V5](http://https://www.vexrobotics.com/vexcode/pro-v5 "VEXCode Pro V5") was used to generate the competition template. The project uses the [V5 API](http://https://api.vexcode.cloud/v5/ "V5 API"). 
+Code created mostly in VS Code with the [Vex Robotics extention](https://www.vexrobotics.com/vexcode/vscode-extension "Vex Robotics extention"). [VEXCode Pro V5](https://www.vexrobotics.com/vexcode/pro-v5 "VEXCode Pro V5") was used to generate the competition template. The project uses the [V5 API](https://api.vexcode.cloud/v5/ "V5 API"). 
 
 ## Quickstart - Load onto V5 Brain
 By default, the program loads itself into slot 2 on the brain, overwriting any project there if one should exist.
